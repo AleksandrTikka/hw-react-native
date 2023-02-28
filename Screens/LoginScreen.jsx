@@ -93,9 +93,14 @@ export default function LoginScreen() {
           resizeMode="cover"
           source={require("../assets/photo_bg.png")}
         >
-          <View style={styles.formWrapper}>
-            <KeyboardAvoidingView
-              behavior={Platform.OS == "ios" ? "padding" : "height"}
+          <KeyboardAvoidingView
+            behavior={Platform.OS == "ios" ? "padding" : "height"}
+          >
+            <View
+              style={{
+                ...styles.formWrapper,
+                paddingBottom: isShowkeyboard ? -100 : 144,
+              }}
             >
               <View style={styles.titleWrapper}>
                 <Text style={styles.title}>Войти</Text>
@@ -105,7 +110,7 @@ export default function LoginScreen() {
                 style={{
                   ...styles.form,
                   width: dimensions,
-                  marginBottom: isShowkeyboard ? -100 : 144,
+                  // marginBottom: isShowkeyboard ? -105 : 144,
                 }}
               >
                 <View>
@@ -146,6 +151,7 @@ export default function LoginScreen() {
                     secureTextEntry={isSecurePassword}
                   ></TextInput>
                   <TouchableOpacity
+                    activeOpacity={0.8}
                     onPress={showPassword}
                     style={styles.btnSecure}
                   >
@@ -155,18 +161,22 @@ export default function LoginScreen() {
                   </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.btn} onPress={onSubmitForm}>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  style={styles.btn}
+                  onPress={onSubmitForm}
+                >
                   <Text style={styles.btnTitle}>Войти</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.link}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.link}>
                   <Text style={styles.linkText}>
                     Нет аккаунта? Зарегистрироваться
                   </Text>
                 </TouchableOpacity>
               </View>
-            </KeyboardAvoidingView>
-          </View>
+            </View>
+          </KeyboardAvoidingView>
         </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
@@ -180,21 +190,16 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: "flex-end",
-    // alignItems: "center",
   },
   formWrapper: {
-    // flex: 1,
     alignItems: "center",
-    justifyContent: "flex-end",
-    // alignItems: "center",
+
     backgroundColor: "#fff",
     marginHorizontal: 0,
-    // paddingHorizontal: 16,
+
     paddingTop: 32,
     borderTopLeftRadius: 35,
     borderTopRightRadius: 25,
-    // paddingBottom: 144,
-    // gap: 16,
   },
   form: {},
   titleWrapper: {

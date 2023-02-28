@@ -11,6 +11,9 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Dimensions,
+  // TouchableHighlight,
+  Image,
+  Alert,
 } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -30,14 +33,19 @@ export default function RegistrationScreen() {
   const [isEmailFocus, setIsEmailFocus] = useState(false);
   const [isPasswordFocus, setIsPasswordFocus] = useState(false);
   const [state, setState] = useState(initialState);
-  const [dimensions, setDimensions] = useState(
+  const [dimensionsWidth, setDimensionsWidth] = useState(
     Dimensions.get("window").width - 16 * 2
+  );
+  const [dimensionsHeigth, setDimensionsHeight] = useState(
+    Dimensions.get("window").height
   );
 
   useEffect(() => {
     const onChange = () => {
       const width = Dimensions.get("window").width - 16 * 2;
-      setDimensions(width);
+      setDimensionsWidth(width);
+      const height = Dimensions.get("window").height;
+      setDimensionsHeight(height);
     };
     const subscription = Dimensions.addEventListener("change", onChange);
     return () => {
@@ -110,7 +118,9 @@ export default function RegistrationScreen() {
     return isFocus ? { ...styles.input, ...styles.inputOnFocus } : styles.input;
   };
 
-  // const onShowPassword
+  const onAddImage = () => {
+    Alert.alert("Functionality in development...");
+  };
 
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
@@ -120,26 +130,97 @@ export default function RegistrationScreen() {
           resizeMode="cover"
           style={styles.background}
         >
-          <View
-            style={{
-              ...styles.formWrapper,
-
-              // paddingHorizontal: dimensions,
-            }}
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
           >
-            <KeyboardAvoidingView
-              behavior={Platform.OS === "ios" ? "padding" : "height"}
+            <View
+              style={{
+                ...styles.formWrapper,
+                // marginBottom: isShowKeyboard ? -160 : 78,
+                // marginTop: dimensionsWidth > dimensionsHeigth ? 50 : 0,
+                // paddingHorizontal: dimensions,
+              }}
             >
-              <View style={styles.titleWrapper}>
-                <Text style={styles.title}>Регистрация</Text>
+              <View
+                style={{
+                  alignItems: "center",
+
+                  position: "absolute",
+                  top: -60,
+                  zIndex: 10,
+                }}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 120,
+                    height: 120,
+                    backgroundColor: "#F6F6F6",
+                    borderRadius: 16,
+
+                    // left: "50%",
+                  }}
+                >
+                  <TouchableOpacity
+                    style={{
+                      zIndex: 20,
+                      position: "absolute",
+                      right: -12.5,
+                      bottom: 14,
+                    }}
+                    // title="Pick an image from camera roll"
+                    onPress={onAddImage}
+                  >
+                    <View
+                      style={{
+                        justifyContent: "center",
+                        width: 25,
+                        height: 25,
+                      }}
+                    >
+                      {/* <Svg
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12.5"
+                        cy="12.5"
+                        r="12"
+                        fill="white"
+                        stroke="#FF6C00"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M13 6H12V12H6V13H12V19H13V13H19V12H13V6Z"
+                        fill="#FF6C00"
+                      />
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+                    </Svg> */}
+
+                      <Image
+                        source={require("../assets/add.png")}
+                        resizeMode="cover"
+                      />
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </View>
               <View
                 style={{
                   ...styles.form,
-                  width: dimensions,
-                  marginBottom: isShowKeyboard ? -100 : 78,
+                  width: dimensionsWidth,
+                  marginBottom: isShowKeyboard ? -175 : 78,
                 }}
               >
+                <View style={styles.titleWrapper}>
+                  <Text style={styles.title}>Регистрация</Text>
+                </View>
                 <View>
                   <TextInput
                     style={inputStyle(isLoginFocus)}
@@ -193,6 +274,7 @@ export default function RegistrationScreen() {
                     secureTextEntry={isSecurePassword}
                   ></TextInput>
                   <TouchableOpacity
+                    activeOpacity={0.8}
                     onPress={showPassword}
                     style={styles.btnSecure}
                   >
@@ -213,8 +295,8 @@ export default function RegistrationScreen() {
                   <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
                 </TouchableOpacity>
               </View>
-            </KeyboardAvoidingView>
-          </View>
+            </View>
+          </KeyboardAvoidingView>
         </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
@@ -224,40 +306,38 @@ export default function RegistrationScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // justifyContent: "center",
+
+    position: "relative",
   },
   background: {
     flex: 1,
-
     justifyContent: "flex-end",
-    // alignItems: "center",
-
-    // width: ,
   },
   formWrapper: {
-    // flex: 1,
     alignItems: "center",
-    justifyContent: "flex-end",
-    // alignItems: "center",
+
     backgroundColor: "#fff",
-    marginHorizontal: 0,
-    // paddingHorizontal: 16,
-    paddingTop: 90,
+
     borderTopLeftRadius: 35,
     borderTopRightRadius: 25,
-    // paddingBottom: 78,
-    // gap: 16,
+
+    paddingTop: 92,
   },
-  form: {},
+  form: {
+    // marginTop: 92,
+    // PaddingBottom: 78,
+  },
   titleWrapper: {
     alignItems: "center",
   },
   title: {
     fontFamily: "Roboto-Medium",
     fontStyle: "normal",
-    // fontWeight: "500",
+
     fontSize: 30,
     lineHeight: 35,
-    // letterSpacing: "0.01em",
+
     color: "#212121",
 
     marginBottom: 30,
@@ -270,7 +350,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F6F6",
     fontFamily: "Roboto-Medium",
     fontStyle: "normal",
-    // fontWeight: "500",
+
     fontSize: 16,
     lineHeight: 19,
 
@@ -307,7 +387,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontFamily: "Roboto-Regular",
     fontStyle: "normal",
-    // fontWeight: "400",
+
     fontSize: 16,
     lineHeight: 19,
   },
@@ -318,7 +398,7 @@ const styles = StyleSheet.create({
   linkText: {
     fontFamily: "Roboto-Regular",
     fontStyle: "normal",
-    // fontWeight: "400",
+
     fontSize: 16,
     lineHeight: 19,
 
