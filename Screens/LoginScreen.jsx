@@ -29,7 +29,7 @@ export default function LoginScreen() {
   const [isEmailFocus, setIsEmailFocus] = useState(false);
   const [isPasswordFocus, setIsPasswordFocus] = useState(false);
 
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const dimensions = width - 16 * 2;
 
   const showPassword = () => {
@@ -99,7 +99,7 @@ export default function LoginScreen() {
             <View
               style={{
                 ...styles.formWrapper,
-                paddingBottom: isShowkeyboard ? -100 : 144,
+                paddingBottom: dimensions > height ? 0 : 144,
               }}
             >
               <View style={styles.titleWrapper}>
@@ -111,6 +111,7 @@ export default function LoginScreen() {
                   ...styles.form,
                   width: dimensions,
                   // marginBottom: isShowkeyboard ? -105 : 144,
+                  marginBottom: isShowkeyboard ? -100 : 0,
                 }}
               >
                 <View>
@@ -208,10 +209,10 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "Roboto-Medium",
     fontStyle: "normal",
-    // fontWeight: "500",
+
     fontSize: 30,
     lineHeight: 35,
-    // letterSpacing: "0.01em",
+
     color: "#212121",
 
     marginBottom: 30,
@@ -224,7 +225,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F6F6",
     fontFamily: "Roboto-Medium",
     fontStyle: "normal",
-    // fontWeight: "500",
+
     fontSize: 16,
     lineHeight: 19,
 
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontFamily: "Roboto-Regular",
     fontStyle: "normal",
-    // fontWeight: "400",
+
     fontSize: 16,
     lineHeight: 19,
   },
@@ -272,7 +273,7 @@ const styles = StyleSheet.create({
   linkText: {
     fontFamily: "Roboto-Regular",
     fontStyle: "normal",
-    // fontWeight: "400",
+
     fontSize: 16,
     lineHeight: 19,
 
