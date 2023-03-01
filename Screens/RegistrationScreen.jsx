@@ -130,7 +130,7 @@ export default function RegistrationScreen() {
           style={styles.background}
         >
           <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            behavior={Platform.OS === "ios" ? "padding" : ""}
           >
             <View
               style={{
@@ -187,7 +187,7 @@ export default function RegistrationScreen() {
                 style={{
                   ...styles.form,
                   width: dimensionsWidth,
-                  marginBottom: isShowKeyboard ? -100 : 0,
+                  marginBottom: isShowKeyboard ? -175 : 0,
                 }}
               >
                 <View style={styles.titleWrapper}>

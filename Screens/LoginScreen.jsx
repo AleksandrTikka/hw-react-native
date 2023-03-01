@@ -94,7 +94,7 @@ export default function LoginScreen() {
           source={require("../assets/photo_bg.png")}
         >
           <KeyboardAvoidingView
-            behavior={Platform.OS == "ios" ? "padding" : "height"}
+            behavior={Platform.OS == "ios" ? "padding" : ""}
           >
             <View
               style={{
@@ -111,7 +111,7 @@ export default function LoginScreen() {
                   ...styles.form,
                   width: dimensions,
                   // marginBottom: isShowkeyboard ? -105 : 144,
-                  marginBottom: isShowkeyboard ? -100 : 0,
+                  marginBottom: isShowkeyboard ? -241 : 0,
                 }}
               >
                 <View>
