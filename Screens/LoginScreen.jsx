@@ -110,7 +110,6 @@ export default function LoginScreen() {
                 style={{
                   ...styles.form,
                   width: dimensions,
-                  // marginBottom: isShowkeyboard ? -105 : 144,
                   marginBottom: isShowkeyboard ? -241 : 0,
                 }}
               >
