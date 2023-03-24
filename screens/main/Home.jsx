@@ -42,7 +42,7 @@ export default function Home() {
     >
       <MainTab.Screen
         options={{
-          //   headerShown: false,
+          headerShown: false,
           tabBarIcon: ({ focused, size, color }) => (
             <View
               style={{
@@ -58,7 +58,7 @@ export default function Home() {
             </View>
           ),
 
-          title: "Публикации",
+          title: "Публикації",
           //   headerStyle: {
           //     height: 88,
           //   },
@@ -95,7 +95,7 @@ export default function Home() {
               />
             </View>
           ),
-          title: "Создать публикацию",
+          title: "Створити публікацію",
           //   headerStyle: {
           //     height: 88,
           //   },

@@ -36,21 +36,6 @@ export default function LoginScreen({ navigation }) {
     setIsSecurePassword((isSecurePassword) => !isSecurePassword);
   };
 
-  // const [fontsLoaded] = useFonts({
-  //   "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
-  //   "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),
-  // });
-
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
-
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
@@ -124,7 +109,7 @@ export default function LoginScreen({ navigation }) {
                     onChangeText={(value) =>
                       setState((prevState) => ({ ...prevState, email: value }))
                     }
-                    placeholder="Адрес электронной почты"
+                    placeholder="Адреса електронної пошти"
                     placeholderTextColor="#BDBDBD"
                   ></TextInput>
                 </View>
@@ -156,7 +141,7 @@ export default function LoginScreen({ navigation }) {
                     style={styles.btnSecure}
                   >
                     <Text style={styles.btnSecureText}>
-                      {isSecurePassword ? "Показать" : "Скрыть"}
+                      {isSecurePassword ? "Показати" : "Сховати"}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -166,7 +151,7 @@ export default function LoginScreen({ navigation }) {
                   style={styles.btn}
                   onPress={onSubmitForm}
                 >
-                  <Text style={styles.btnTitle}>Войти</Text>
+                  <Text style={styles.btnTitle}>Увійти</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -175,7 +160,7 @@ export default function LoginScreen({ navigation }) {
                   onPress={() => navigation.navigate("Registration")}
                 >
                   <Text style={styles.linkText}>
-                    Нет аккаунта? Зарегистрироваться
+                    Немає облікового запису? Зареєструватись
                   </Text>
                 </TouchableOpacity>
               </View>

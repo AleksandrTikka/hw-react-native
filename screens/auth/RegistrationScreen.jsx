@@ -191,7 +191,7 @@ export default function RegistrationScreen({ navigation }) {
                 }}
               >
                 <View style={styles.titleWrapper}>
-                  <Text style={styles.title}>Регистрация</Text>
+                  <Text style={styles.title}>Реєстрація</Text>
                 </View>
                 <View>
                   <TextInput
@@ -204,7 +204,7 @@ export default function RegistrationScreen({ navigation }) {
                     onChangeText={(value) =>
                       setState((prevState) => ({ ...prevState, login: value }))
                     }
-                    placeholder={"Логин"}
+                    placeholder={"Логін"}
                     placeholderTextColor="#BDBDBD"
                   ></TextInput>
                 </View>
@@ -219,7 +219,7 @@ export default function RegistrationScreen({ navigation }) {
                     onChangeText={(value) =>
                       setState((prevState) => ({ ...prevState, email: value }))
                     }
-                    placeholder={"Адрес электронной почты"}
+                    placeholder={"Адреса электронної пошти"}
                     placeholderTextColor="#BDBDBD"
                   ></TextInput>
                 </View>
@@ -251,7 +251,7 @@ export default function RegistrationScreen({ navigation }) {
                     style={styles.btnSecure}
                   >
                     <Text style={styles.btnSecureText}>
-                      {isSecurePassword ? "Показать" : "Скрыть"}
+                      {isSecurePassword ? "Показати" : "Сховати"}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -260,7 +260,7 @@ export default function RegistrationScreen({ navigation }) {
                   style={styles.btn}
                   onPress={onSubmitForm}
                 >
-                  <Text style={styles.btnTitle}>Зарегистрироваться</Text>
+                  <Text style={styles.btnTitle}>Зареєструватись</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -268,7 +268,9 @@ export default function RegistrationScreen({ navigation }) {
                   style={styles.link}
                   onPress={() => navigation.navigate("Login")}
                 >
-                  <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
+                  <Text style={styles.linkText}>
+                    Вже є обліковий запис? Увійти
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
